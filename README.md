@@ -19,6 +19,10 @@ For the model training, I have used below datasets.
 - https://www.kaggle.com/datasets/kurniaaisyah/soil-types-dataset - contain images of soil type (881 Images)
 - https://www.kaggle.com/datasets/thirishag/soil-types - contain images of soil type (1360 Images)
 
+2. Below datasets received from Environment Agency – Abu Dhabi.
+Plants_from_ead.xlsx - Via Email
+![Image](src/images/environment_agency_dataset.png)
+
 ## Models
 For the projects there will be two stages of process and each stages will have two different models that predict different types of data and fisr model prediction will be use as a input for the second model.
 
