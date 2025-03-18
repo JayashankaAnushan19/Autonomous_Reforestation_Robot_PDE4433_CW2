@@ -58,7 +58,7 @@ Most accurate model so far: <a href="models/decision_tree_model.pkl">decision_Tr
 1. Tried with GAN to improve the dataset 
 <a href="notebooks/Use_GAN_toImproveDataset.ipynb">GAN Test</a>
 2. Test the dataset received from EAD
-<a href="notebooks/newDataSetTesting_FromEAD.ipynb.ipynb">EAD Dataset Test</a>
+<a href="notebooks/newDataSetTesting_FromEAD.ipynb">EAD Dataset Test</a>
 3. Tried with ChatGPT and XGBosterClasifier for increase accuracy
 <a href="notebooks/ReSampling_for_Increase_Accuracy.ipynb">Resampling Test</a>
 
