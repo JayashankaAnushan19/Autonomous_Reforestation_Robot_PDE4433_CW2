@@ -14,10 +14,17 @@ By utilizing sensor-collected data, the model provides accurate predictions, the
 
 ## Data sets
 For the model training, I have used below dataset.
-1. Below datasets taken from Kaggle.
+1. Image Datasets.
+- https://www.kaggle.com/datasets/prasanshasatpathy/soil-types
+- https://www.kaggle.com/datasets/jhislainematchouath/soil-types-dataset
+
+<b>Sample view of final dataset</b>
+![DataSet](src/images/soilDataset.png)
+
+2. Below datasets taken from Kaggle.
 - https://www.kaggle.com/datasets/varshitanalluri/crop-recommendation-dataset
 
-<b>Sample view of Dataset</b>
+<b>Sample view of dataset</b>
 ![DataSet](src/images/dataSet.png)
 
 ## Models
@@ -45,4 +52,4 @@ Since the highest accuracy, Decison Tree Model selected for further Robotics dev
 
 ## Future enhancement
 1. To obtain more accurate results, it is essential to utilize a more generalized dataset with a larger volume of samples for model training.
-2. Integration with robotics can be achieved by directly feeding sensor outputs into the model, and utilizing the predicted crop types to drive the next stages of robotic development, such as autonomous planting robots, irrigation management robots, and other related systems.
+2. Integration with robotics can be achieved by directly feeding sensor outputs into the model, and utilizing the predicted crop types to drive the next stages of robotic development, such as autonomous planting robots, irrigation management robots, and other related systems. 

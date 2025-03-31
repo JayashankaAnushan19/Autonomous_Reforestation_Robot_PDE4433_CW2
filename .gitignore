@@ -3,5 +3,7 @@
 *.tmp
 *.wbk
 *.asd
-
+data/raw/.ipynb_checkpoints
+notebooks/.ipynb_checkpoints/
 /Zremoved
+/models/soilRecognizeModel
