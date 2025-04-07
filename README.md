@@ -1,76 +1,108 @@
-# <u>Autonomous Reforestation Robot (ML Model) for PDE4433_CW2</u>
+# <u>Autonomous Reforestation Robot: ML Model for Crop Recommendation</u>
+### (PDE4433_CW2)
+<br>
 
-This project develops a machine learning model aimed at predicting the most suitable crops for desert environments, designed for integration with an Autonomous Reforestation Robot. The model processes sensor data, including soil moisture, humidity, nitrogen, potassium, and phosphorus levels, to determine the optimal crop type.
+This project presents a machine learning system designed for integration with an Autonomous Reforestation Robot, capable of recommending optimal crops for arid and desert environments. The system leverages both image-based soil classification and sensor-driven tabular data to provide intelligent and sustainable crop suggestions.
 
 By utilizing sensor-collected data, the model provides accurate predictions, thereby enhancing the precision of crop recommendations for sustainable agriculture.
 
 **Folder Structure**<br>
 ![Folder_Structure](src/images/folder_structure.png)
 
-1. data/ : To store all the data that use for model training and testing
-2. models/ : For save all the models.
-3. notebooks/ : All Jupyter notebooks used for programming.
-4. src/: All the source data (Ex. images, videos) will save here.
+- data/ : To store all the data that use for model training and testing
+- models/ : For save all the models.
+- notebooks/ : All Jupyter notebooks used for programming.
+- src/: All the source data (Ex. images, videos) will save here.
 
-## Data sets
-For the model training, I have used below dataset.
-1. Image Datasets.
-- https://www.kaggle.com/datasets/prasanshasatpathy/soil-types
-- https://www.kaggle.com/datasets/jhislainematchouath/soil-types-dataset
+## <u>Datasets Used</u>
 
-<b>Sample view of final dataset of soil textures</b>
-![DataSet](src/images/soilDataset.png)
+1. **Soil Image Datasets**  
+   - [Soil Types by Prasansha Satpathy](https://www.kaggle.com/datasets/prasanshasatpathy/soil-types)  
+   - [Soil Types Dataset by J. H. Matchouath](https://www.kaggle.com/datasets/jhislainematchouath/soil-types-dataset)  
 
-2. The following datasets were taken from Kaggle.
-- https://www.kaggle.com/datasets/varshitanalluri/crop-recommendation-dataset
+   ![Sample Soil Dataset](src/images/soilDataset.png)
 
-<b>Sample view of tabular dataset</b>
-![DataSet](src/images/dataSet.png)
+2. **Crop Recommendation Dataset**  
+   - [Crop Recommendation by Varshita Nalluri](https://www.kaggle.com/datasets/varshitanalluri/crop-recommendation-dataset)  
 
-## <u>Models</u>
+   ![Sample Tabular Dataset](src/images/dataSet.png)
+
+
+## <u>Model Architecture</u>
 The system employs a two-stage modeling approach where the first model analyzes soil texture images to classify soil type, while the second model integrates this output with additional sensor data to predict suitable crop types. This modular design ensures specialized processing for each data modality while maintaining interoperability between components.
 
 In this stage ML model will analyse the sensor data including predicted data from first model, and then predict suitable crop type for the area. 
 <a href="notebooks/PDE4433_CW2_FinalModelTraining.ipynb">(Model Analysis)</a> 
 
-Models and accuracy so far: 
-1. <a href="models/soilRecognizeModel/soil_clasify_model_epc15.h5">First Model trained by CNN</a>
-    - Training Accuracy: 90.36%
-    - Test Accuracy: 85.00%
-2. <a href="models/Crop_RecommendationDT_decision_tree_model.pkl">Second Model trained by Decision Tree</a>
-    - Train Accuracy: 95.39% 
+### 1. Soil Classification Model (CNN)
+- Input: Soil texture images
+- Output: Soil Type
+- Accuracy:
+  - Training: 90.36%
+  - Test: 85.00%
+- Model: [`soil_clasify_model_epc15.h5`](models/soilRecognizeModel/soil_clasify_model_epc15.h5)
+
+### 2. Crop Recommendation Model
+- Input: Sensor values + Soil Type (from Model 1)
+- Algorithms:
+  - Decision Tree:
+    - Train Accuracy: 95.39%
     - Test Accuracy: 95.00%
-2. <a href="models/Crop_RecommendationDT_random_forest_model.pkl">Second Model trained by Random Forest Model</a>
+    - Model: [`Crop_RecommendationDT_decision_tree_model.pkl`](models/Crop_RecommendationDT_decision_tree_model.pkl)
+  - Random Forest:
     - Train Accuracy: 99.35%
     - Test Accuracy: 99.24%
+    - Model: [`Crop_RecommendationDT_random_forest_model.pkl`](models/Crop_RecommendationDT_random_forest_model.pkl)
+
 
 <br>
 
 The soil prediction model was trained using Google Colab. Codes and test files can be see <a href="https://drive.google.com/drive/folders/1S1gEy1sYb-HPSGwDsGU8mo7gU-cSxGoU?usp=sharing">here</a>.
 
+<u>Soil types:</u>
+![soilType](src/images/soilTypes.png)
 
-Soil recognition model:
-![DataSet](src/images/soilTrainModel.png)
+<u>Soil recognition model:</u>
+![SoilRecognition](src/images/soilTrainModel.png)
 
-Soil texture prediction:
-![DataSet](src/images/imagePredict.png)
+<u>Soil texture prediction:</u>
+![SoilTexturePrediction](src/images/imagePredict.png)
 
 
-Due to its superior accuracy, the Random Forest Model was selected for further robotics development.
+Due to its superior accuracy, the **Random Forest Model** was selected for further robotics development.
 
-## <u>Challenges</u>
-### 1. Find datasets
-- Due to the specialized nature of the conducted research and studies, identifying a suitable dataset proved to be a significant challenge. As the focus of this analysis is to examine desert areas with abundant tree coverage, finding a relevant dataset specific to this domain was particularly difficult. As a result, commonly used datasets for model training were considered as alternative options
+## <u>Final Crop Prediction Model Combined with Image Prediction</u>
+With both models reaching a satisfactory level of performance, they were integrated to function as a unified system. In the final implementation, the combined model operates in the following manner: images are used as inputs to predict the soil texture, while tabular data — including various sensor readings — serves as additional input for the crop recommendation process. This hybrid approach leverages the strengths of both image classification and tabular data analysis to provide more accurate and context-aware crop predictions.
 
-### 2. Avoid overfitting and increase predict accuracy
-- The dataset used for model training is a tabular dataset, with the target output being of a categorical data type. For model training, Decision Tree and Random Forest algorithms were employed. To mitigate the risk of overfitting and enhance prediction accuracy, training was halted at an optimal point, with extensive fine-tuning applied to achieve the best model performance.
+<u>Combined models and final outcome:</u>
+![FinalPrediction](src/images/finalPrediction.png)
 
-## <u>Future enhancement</u>
-1. Expanding the dataset with diverse soil textures and climate attributes will improve model accuracy, especially in desert regions.
-2. Advanced deep learning techniques like Transformers and CNN-RNN hybrids will enhance feature extraction and adaptability.
-3. Real-time learning through online machine learning will enable continuous model improvement with new data.
-4. Direct integration of sensor outputs will support autonomous planting, irrigation, and soil monitoring robots.
-5. pLiDAR, GPS, and sensor fusion will improve navigation and precision in desert terrains.
-6. Satellite imagery, drones, and GIS will enhance soil analysis and large-scale reforestation planning.
-7. IoT and cloud integration will enable real-time monitoring, remote control, and scalable data processing.
-8. Solar-powered and energy-efficient robotics will ensure sustainable operation in remote areas.
+
+## <u>Challenges Faced</u>
+
+1. **Finding Relevant Datasets**  
+   Desert-specific datasets with rich vegetation were scarce. Thus, commonly available soil and crop datasets were adapted.
+
+2. **Preventing Overfitting**  
+   Decision Tree and Random Forest models required tuning and early stopping to avoid overfitting on tabular categorical data.
+
+---
+
+## <u>Future Enhancements</u>
+
+1. Expand datasets to include desert-specific and regionally diverse data.
+2. Integrate deep learning techniques (e.g., Transformers, CNN-RNN hybrids).
+3. Enable online learning for continuous updates.
+4. Support real-time sensor-based automation in robots.
+5. Include GPS, LiDAR, and sensor fusion for autonomous navigation.
+6. Use GIS, drone, and satellite data for large-scale prediction.
+7. Integrate IoT/cloud for real-time, remote operation.
+8. Develop solar-powered hardware for sustainability.
+
+
+<br><br>
+
+---
+🧑‍💻 *Developed by Jayashanka Anushan*  
+📧 Email: [jayasankaanushan199@gmail.com](mailto:jayasankaanushan199@gmail.com)  
+🌐 [Portfolio](https://sites.google.com/view/jayashanka-anushan/home) | [LinkedIn](https://linkedin.com/in/JayashankaAnushan) | [GitHub](https://github.com/JayashankaAnushan)
