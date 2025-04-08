@@ -20,7 +20,7 @@ By utilizing sensor-collected data, the model provides accurate predictions, the
    - [Soil Types by Prasansha Satpathy](https://www.kaggle.com/datasets/prasanshasatpathy/soil-types)  
    - [Soil Types Dataset by J. H. Matchouath](https://www.kaggle.com/datasets/jhislainematchouath/soil-types-dataset)  
 
-   ![Sample Soil Dataset](src/images/soilDataset.png)
+   ![Sample Soil Dataset](src/images/soilDatasetFinal.png)
 
 2. **Crop Recommendation Dataset**  
    - [Crop Recommendation by Varshita Nalluri](https://www.kaggle.com/datasets/varshitanalluri/crop-recommendation-dataset)  
@@ -32,7 +32,8 @@ By utilizing sensor-collected data, the model provides accurate predictions, the
 The system employs a two-stage modeling approach where the first model analyzes soil texture images to classify soil type, while the second model integrates this output with additional sensor data to predict suitable crop types. This modular design ensures specialized processing for each data modality while maintaining interoperability between components.
 
 In this stage ML model will analyse the sensor data including predicted data from first model, and then predict suitable crop type for the area. 
-<a href="notebooks/PDE4433_CW2_FinalModelTraining.ipynb">(Model Analysis)</a> 
+- First Model :  The soil prediction model was trained using Google Colab. Codes and test files can be see <a href="https://drive.google.com/drive/folders/1S1gEy1sYb-HPSGwDsGU8mo7gU-cSxGoU?usp=sharing">here</a>.
+- Second Model : Final model that predict the crop type. <a hre.f="notebooks/PDE4433_CW2_FinalModelTraining.ipynb">(Final Model Analysis)</a> 
 
 ### 1. Soil Classification Model (CNN)
 - Input: Soil texture images
@@ -54,29 +55,33 @@ In this stage ML model will analyse the sensor data including predicted data fro
     - Test Accuracy: 99.24%
     - Model: [`Crop_RecommendationDT_random_forest_model.pkl`](models/Crop_RecommendationDT_random_forest_model.pkl)
 
-
 <br>
 
-The soil prediction model was trained using Google Colab. Codes and test files can be see <a href="https://drive.google.com/drive/folders/1S1gEy1sYb-HPSGwDsGU8mo7gU-cSxGoU?usp=sharing">here</a>.
+## <u>Image model analysis</u>
 
 <u>Soil types:</u>
+
 ![soilType](src/images/soilTypes.png)
 
 <u>Soil recognition model:</u>
+
 ![SoilRecognition](src/images/soilTrainModel.png)
 
 <u>Soil texture prediction:</u>
+
 ![SoilTexturePrediction](src/images/imagePredict.png)
 
 
 Due to its superior accuracy, the **Random Forest Model** was selected for further robotics development.
 
+
+
 ## <u>Final Crop Prediction Model Combined with Image Prediction</u>
 With both models reaching a satisfactory level of performance, they were integrated to function as a unified system. In the final implementation, the combined model operates in the following manner: images are used as inputs to predict the soil texture, while tabular data — including various sensor readings — serves as additional input for the crop recommendation process. This hybrid approach leverages the strengths of both image classification and tabular data analysis to provide more accurate and context-aware crop predictions.
 
 <u>Combined models and final outcome:</u>
-![FinalPrediction](src/images/finalPrediction.png)
 
+![FinalPrediction](src/images/finalPrediction.png)
 
 ## <u>Challenges Faced</u>
 
@@ -86,7 +91,37 @@ With both models reaching a satisfactory level of performance, they were integra
 2. **Preventing Overfitting**  
    Decision Tree and Random Forest models required tuning and early stopping to avoid overfitting on tabular categorical data.
 
----
+## Run the code
+For run the code, able to locate the jupiter notebook file from <a herf="notebooks/PDE4433_CW2_FinalModelTraining.ipynb">here</a>
+1. Install Required Libraries <br>
+Ensure all necessary libraries are installed before running the notebook.
+   - You may use the following Python script to install the dependencies programmatically:
+   ```
+         import os
+
+         libraries = [
+            "pandas",
+            "scikit-learn",
+            "matplotlib",
+            "numpy",
+            "joblib",
+            "tensorflow"
+         ]
+
+         for lib in libraries:
+            os.system(f"pip install {lib}")
+   ```
+   - Alternatively, install them via the command line:
+   ```
+   pip install pandas scikit-learn matplotlib numpy joblib tensorflow
+   ```
+2. Run the Notebook
+   - Use ```Shift + Enter``` to execute each cell, or use the Run button in the Jupyter Notebook interface.
+   - To train the model, run the cells that contain the training scripts and required library imports.
+3. Load the Final Model for Prediction
+   - If you prefer not to retrain the model, scroll to the designated cell shown below and run it to load the pre-trained model and execute the complete system, which integrates both models for final prediction (Provide the correct image path to ```img_path = '../src/images/Red_24.png'```):
+
+      ![LoadModel](src/images/guidtoRunFinalModel.png)
 
 ## <u>Future Enhancements</u>
 
@@ -99,8 +134,10 @@ With both models reaching a satisfactory level of performance, they were integra
 7. Integrate IoT/cloud for real-time, remote operation.
 8. Develop solar-powered hardware for sustainability.
 
+## <u>Video demostration</u>
+[![DemostrationVideo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
 
-<br><br>
+<br>
 
 ---
 🧑‍💻 *Developed by Jayashanka Anushan*  
