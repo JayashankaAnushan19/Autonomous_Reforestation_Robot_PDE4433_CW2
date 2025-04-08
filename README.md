@@ -135,7 +135,7 @@ Ensure all necessary libraries are installed before running the notebook.
 8. Develop solar-powered hardware for sustainability.
 
 ## <u>Video demostration</u>
-[![DemostrationVideo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+[![DemostrationVideo](https://img.youtube.com/vi/1Edy1CHsnU4/0.jpg)](https://www.youtube.com/watch?v=1Edy1CHsnU4)
 
 <br>
 
