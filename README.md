@@ -137,6 +137,10 @@ Ensure all necessary libraries are installed before running the notebook.
 ## <u>Video demostration</u>
 [![DemostrationVideo](https://img.youtube.com/vi/1Edy1CHsnU4/0.jpg)](https://www.youtube.com/watch?v=1Edy1CHsnU4)
 
+## Enhancement with live GUI (with HuggingFace)
+View web interface collaberate with huggingFace <a href="https://huggingface.co/spaces/JayashankaAnushan19/CropRecomendation">Here.</a> <br> 
+or Link : https://huggingface.co/spaces/JayashankaAnushan19/CropRecomendation
+
 <br>
 
 ---
